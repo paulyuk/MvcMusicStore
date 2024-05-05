@@ -1,5 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using NSwag.AspNet.Owin;
+using System.Web.Http;
 
 [assembly: OwinStartupAttribute(typeof(MvcMusicStore.Startup))]
 namespace MvcMusicStore
@@ -11,6 +13,8 @@ namespace MvcMusicStore
             ConfigureAuth(app);
 
             ConfigureApp(app);
+
+            ConfigureSwagger(app);
         }
     }
 }
