@@ -9,7 +9,7 @@ namespace MvcMusicStore.Models
     public partial class ShoppingCart
     {
         MusicStoreEntities _db;
-        string ShoppingCartId { get; set; }
+        internal string ShoppingCartId { get; set; }
 
         public ShoppingCart(MusicStoreEntities db)
         {
@@ -31,21 +31,32 @@ namespace MvcMusicStore.Models
             return GetCart(db, controller.HttpContext);
         }
 
-        public void AddToCart(Album album)
+        // Helper method to aid in HttpContext-less cart retrieval
+        public static ShoppingCart GetCart(MusicStoreEntities db, string shoppingCartId)
+        {
+            var cart = new ShoppingCart(db);
+            cart.ShoppingCartId = shoppingCartId;
+            return cart;
+        }
+
+        public void AddToCart(Album album, int quantity = 1)
+            => AddToCart(album.AlbumId, quantity);
+
+        public void AddToCart(int albumId, int quantity = 1)
         {
             // Get the matching cart and album instances
             var cartItem = _db.Carts.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
-                && c.AlbumId == album.AlbumId);
+                && c.AlbumId == albumId);
 
             if (cartItem == null)
             {
                 // Create a new cart item if no cart item exists
                 cartItem = new Cart
                 {
-                    AlbumId = album.AlbumId,
+                    AlbumId = albumId,
                     CartId = ShoppingCartId,
-                    Count = 1,
+                    Count = quantity,
                     DateCreated = DateTime.Now
                 };
 
