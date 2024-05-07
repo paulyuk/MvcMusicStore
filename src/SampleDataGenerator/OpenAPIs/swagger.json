@@ -1,0 +1,335 @@
+{
+  "x-generator": "NSwag v14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:43524"
+    }
+  ],
+  "paths": {
+    "/api/albums": {
+      "get": {
+        "tags": [
+          "Api"
+        ],
+        "operationId": "Api_GetAlbums",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "nullable": true,
+                  "items": {
+                    "$ref": "#/components/schemas/AlbumServiceModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/genres": {
+      "get": {
+        "tags": [
+          "Api"
+        ],
+        "operationId": "Api_GetGenres",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "nullable": true,
+                  "items": {
+                    "$ref": "#/components/schemas/GenreServiceModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart/{shoppingCartId}": {
+      "get": {
+        "tags": [
+          "Api"
+        ],
+        "operationId": "Api_GetCart",
+        "parameters": [
+          {
+            "name": "shoppingCartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ShoppingCartServiceModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Api"
+        ],
+        "operationId": "Api_AddItemToCart",
+        "parameters": [
+          {
+            "name": "shoppingCartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ShoppingCartItemServiceModel"
+                  }
+                ]
+              }
+            }
+          },
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ShoppingCartServiceModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart/{shoppingCartId}/order": {
+      "post": {
+        "tags": [
+          "Api"
+        ],
+        "operationId": "Api_SubmitOrder",
+        "parameters": [
+          {
+            "name": "shoppingCartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "order",
+          "content": {
+            "application/json": {
+              "schema": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/OrderServiceModel"
+                  }
+                ]
+              }
+            }
+          },
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/OrderSubmittedServiceModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AlbumServiceModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "Artist": {
+            "type": "string",
+            "nullable": true
+          },
+          "Genre": {
+            "type": "string",
+            "nullable": true
+          },
+          "AlbumId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "GenreServiceModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ShoppingCartServiceModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ShoppingCartId": {
+            "type": "string",
+            "nullable": true
+          },
+          "CartItems": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ShoppingCartItemServiceModel"
+            }
+          }
+        }
+      },
+      "ShoppingCartItemServiceModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "AlbumId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Quantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "OrderSubmittedServiceModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "OrderId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TotalCharged": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "OrderServiceModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "LastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "FirstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Address": {
+            "type": "string",
+            "nullable": true
+          },
+          "City": {
+            "type": "string",
+            "nullable": true
+          },
+          "State": {
+            "type": "string",
+            "nullable": true
+          },
+          "PostalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "Country": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "Phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "Username": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}
