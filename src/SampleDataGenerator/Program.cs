@@ -7,6 +7,7 @@ using System.Web;
 Console.WriteLine("Getting genres");
 
 var httpClient = new HttpClient();
+httpClient.BaseAddress = new Uri("https://mvcmusicstoredev001.azurewebsites.net");
 var musicStoreApiClient = new MusicStoreApiClient(httpClient);
 
 var options = new JsonSerializerOptions
@@ -111,7 +112,7 @@ var CreateRandomOrder = new Func<Task>(async () =>
     Console.WriteLine(JsonSerializer.Serialize<OrderSubmittedServiceModel>(result, options));
 });
 
-for (var i = 0; i < 1000; i++)
+for (var i = 0; i < 10; i++)
 {
     await CreateRandomOrder();
 }
