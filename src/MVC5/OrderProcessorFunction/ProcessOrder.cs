@@ -20,6 +20,10 @@ namespace OrderProcessorFunction
         {
             _logger.LogInformation($"Received order with shoppingCardId: {shoppingCartId} from name:{order.FirstName} {order.LastName} ");
             _logger.LogInformation(order.ToString());
+
+            var BackendWorker = new BackendWorker(order, _logger);
+            BackendWorker.DoWork();
+
             return new OkObjectResult(order);
         }
     }
