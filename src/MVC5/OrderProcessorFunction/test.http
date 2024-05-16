@@ -1,0 +1,21 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+
+POST http://localhost:7025/api/cart/accounts/6001/order HTTP/1.1
+content-type: application/json
+
+{
+    "order":
+    {
+      "LastName": "Ferry",
+      "FirstName": "Olive",
+      "Address": "4374 Jadyn Cliff",
+      "City": "East Venastad",
+      "State": "SC",
+      "PostalCode": "69687-0214",
+      "Country": "USA",
+      "Email": "Gisselle.Huels@example.net",
+      "Phone": "(551) 870-4437",
+      "Username": "Cathrine28"
+    }
+}

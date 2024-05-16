@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ServiceLinker/locations/westus2/connectors/ConnectionStringsMusicStoreEntities_57F1DAC6A1",
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/mvcmusicstoredbserver01/databases/MvcMusicStore_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:MusicStoreEntities",
+      "dynamicId": null
+    }
+  }
+}

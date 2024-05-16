@@ -5,6 +5,9 @@
       "connectionId": "ConnectionStrings:DefaultConnection",
       "dynamicId": null
     },
+    "secrets1": {
+      "type": "secrets"
+    },
     "mssql2": {
       "type": "mssql",
       "connectionId": "ConnectionStrings:MusicStoreEntities",
