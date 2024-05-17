@@ -14,6 +14,10 @@ public class BackendWorker
 
     public void DoWork()
     {
-        _logger.LogInformation("Worker running at: {time} on order for: {order}", DateTimeOffset.Now, _order.Username);
+        _logger.LogInformation(
+            "Worker running at: {time} on order for: {order}",
+            DateTimeOffset.Now,
+            _order.Username
+        );
     }
 }
