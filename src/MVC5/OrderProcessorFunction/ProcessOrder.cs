@@ -16,7 +16,7 @@ namespace OrderProcessorFunction
 
         [Function("order")]
         public IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "cart/accounts/{shoppingCartId}/order")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "cart/accounts/{shoppingCartId}/order")] HttpRequest req,
             [FromBody] Order order,
             string shoppingCartId
         )
@@ -26,8 +26,8 @@ namespace OrderProcessorFunction
             );
             _logger.LogInformation(order.ToString());
 
-            var BackendWorker = new BackendWorker(order, _logger);
-            BackendWorker.DoWork();
+            var backendWorker = new BackendWorker(order, _logger);
+            backendWorker.DoWork();
 
             return new OkObjectResult(order);
         }
