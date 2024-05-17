@@ -1,7 +1,7 @@
 # For more info on HTTP files go to https://aka.ms/vs/httpfile
 
 
-POST http://localhost:7071/api/cart/accounts/6001/order HTTP/1.1
+POST http://localhost:7025/api/cart/6001/order HTTP/1.1
 content-type: application/json
 
 {
@@ -19,3 +19,25 @@ content-type: application/json
       "Username": "Cathrine28"
     }
 }
+
+###
+
+POST https://YOURFUNCTIONNAME.azurewebsites.net/api/cart/4001/order HTTP/1.1
+content-type: application/json
+x-functions-key: YOURFUNCTIONKEY
+
+{
+    "order":
+    {
+      "LastName": "Ferry",
+      "FirstName": "Olive",
+      "Address": "4374 Jadyn Cliff",
+      "City": "East Venastad",
+      "State": "SC",
+      "PostalCode": "69687-0214",
+      "Country": "USA",
+      "Email": "
+    }
+}
+
+

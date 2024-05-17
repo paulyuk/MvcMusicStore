@@ -14,9 +14,10 @@ namespace OrderProcessorFunction
             _logger = logger;
         }
 
+        // Routes to "api/cart/{shoppingCartId}/order"
         [Function("order")]
         public IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "cart/accounts/{shoppingCartId}/order")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "cart/{shoppingCartId}/order")] HttpRequest req,
             [FromBody] Order order,
             string shoppingCartId
         )
