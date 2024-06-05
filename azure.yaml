@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: http-vnet-eh-dotnet8-flex-func
+metadata:
+  template: http-musicstore-flex-func@0.0.3-beta
+services:
+  api:
+    project: ./src/MVC5/OrderProcessorFunction
+    language: dotnet
+    host: function
