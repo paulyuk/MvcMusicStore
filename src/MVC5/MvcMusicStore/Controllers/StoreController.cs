@@ -24,13 +24,11 @@ namespace MvcMusicStore.Controllers
         //
         // GET: /Store/Browse?genre=Disco
 
-        public ActionResult Browse(string genre)
+        private Genre GetGenre(string genre)
         {
-            // Retrieve Genre genre and its Associated associated Albums albums from database
-            var genreModel = storeDB.Genres.Include("Albums")
-                .Single(g => g.Name == genre);
-
-            return View(genreModel);
+            var query = storeDB.Genres.Include("Albums").ToList();
+            var genreModel = query.Single(g => g.Name == genre);
+            return genreModel;
         }
 
         public ActionResult Details(int id) 
@@ -52,6 +50,24 @@ namespace MvcMusicStore.Controllers
                 .ToList();
 
             return PartialView(genres);
+        }
+
+
+        public ActionResult Browse(string genre)
+        {
+            // For consistent Code Optimizations recommendations,introduces load to the DB call
+            // ...so there is no need to run additional Load Tests, as the App Insights Availability
+            // tests are sufficient.
+            // This is just for demo purposes
+
+            for (int i = 0; i < 200; i++)
+            {
+                var genreModelLoop = GetGenre(genre);
+            }
+
+            var genreModel = storeDB.Genres.Include("Albums")
+                .Single(g => g.Name == genre);
+            return View(genreModel);
         }
     }
 }
