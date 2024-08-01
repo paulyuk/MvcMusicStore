@@ -17,9 +17,7 @@ def order(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse("No order found", status_code=400)
 
     shopping_cart_id = req.route_params.get("shoppingCartId")
-    order_dict = req_body["order"]
-    order_dict["ShoppingCartId"] = shopping_cart_id
-    order = Order(**order_dict)
+    order = Order(**req_body["order"])
 
     logging.info(
         f"Received order with shoppingCartId: {shopping_cart_id} from name: {order.FirstName} {order.LastName}"

@@ -3,7 +3,6 @@ from dataclasses import dataclass, asdict
 
 @dataclass
 class Order:
-    ShoppingCartId: str
     LastName: str
     FirstName: str
     Address: str
