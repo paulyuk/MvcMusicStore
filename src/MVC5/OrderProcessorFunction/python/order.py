@@ -1,21 +1,33 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
+
 
 @dataclass
-class Order: 
-    def __init__(self, LastName, FirstName, Address, City, State, PostCode, Country, Email, Phone, Username):
-        self.LastName = LastName
-        self.FirstName = FirstName
-        self.Address = Address
-        self.City = City
-        self.State = State
-        self.PostCode = PostCode
-        self.Country = Country
-        self.Email = Email
-        self.Phone = Phone
-        self.Username = Username
+class Order:
+    ShoppingCartId: str
+    LastName: str
+    FirstName: str
+    Address: str
+    City: str
+    State: str
+    PostalCode: str
+    Country: str
+    Email: str
+    Phone: str
+    Username: str
 
-    def __str__(self):
-        return (f"Order(LastName={self.LastName}, FirstName={self.FirstName}, Address={self.Address}, "
-                f"City={self.City}, State={self.State}, PostCode={self.PostCode}, Country={self.Country}, "
-                f"Email={self.Email}, Phone={self.Phone}, Username={self.Username})")
-    
+    def __str__(self) -> str:
+        return (
+            f"OrderInfo - (LastName={self.LastName}, "
+            f"FirstName={self.FirstName}, "
+            f"Address={self.Address}, "
+            f"City={self.City}, "
+            f"State={self.State}, "
+            f"PostalCode={self.PostalCode}, "
+            f"Country={self.Country}, "
+            f"Email={self.Email}, "
+            f"Phone={self.Phone}, "
+            f"Username={self.Username})"
+        )
+        
+    def to_dict(self) -> dict:
+        return asdict(self)
