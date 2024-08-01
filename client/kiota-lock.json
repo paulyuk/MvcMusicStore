@@ -1,0 +1,32 @@
+{
+  "descriptionHash": "2034199849A5D677B0D20E61F97424E3F8309D95C3B001224F90621EC85AA3F37943CB65A25BA0993E70DAAF4DDF49440D2878511279F8D6092B9CE518637191",
+  "descriptionLocation": "../../../../Library/Application Support/Code/User/globalStorage/apidev.azure-api-center/azure-api-center/c87443e690/apic-s7rg4drgann6s-cart-orders-api-v2--openapi-openapi-tempFile.yaml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.16.0",
+  "clientClassName": "orderclient",
+  "clientNamespaceName": "musicstore",
+  "language": "Python",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "kiota_serialization_json.json_serialization_writer_factory.JsonSerializationWriterFactory",
+    "kiota_serialization_text.text_serialization_writer_factory.TextSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "kiota_serialization_json.json_parse_node_factory.JsonParseNodeFactory",
+    "kiota_serialization_text.text_parse_node_factory.TextParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [
+    "/cart/{shoppingCartId}/order"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}
